@@ -1,250 +1,129 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para mi Princesa</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --color-principal: #ff4d6d;
-            --color-secundario: #ff85a1;
-            --fondo: #fff0f3;
-            --blanco-transparente: rgba(255, 255, 255, 0.9);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Ti ❤️</title>
 
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: var(--fondo);
-            font-family: 'Poppins', sans-serif;
-            overflow: hidden;
-            color: #4a4a4a;
-        }
-
-        /* Corazones de fondo */
-        .corazon-bg {
-            position: absolute;
-            color: var(--color-secundario);
-            opacity: 0.3;
-            animation: flotar 10s linear infinite;
-            z-index: 0;
-            user-select: none;
-            pointer-events: none;
-        }
-
-        @keyframes flotar {
-            0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.5; }
-            90% { opacity: 0.5; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-        }
-
-        /* Tarjeta Principal */
-        .tarjeta {
-            background: var(--blanco-transparente);
-            backdrop-filter: blur(12px);
-            padding: 50px 30px;
-            border-radius: 40px;
-            box-shadow: 0 20px 50px rgba(255, 77, 109, 0.2);
-            text-align: center;
-            max-width: 400px;
-            width: 85%;
-            border: 2px solid white;
-            z-index: 10;
-            animation: entrada 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        @keyframes entrada {
-            from { opacity: 0; transform: translateY(30px) scale(0.9); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        h1 { 
-            font-family: 'Dancing Script', cursive;
-            color: var(--color-principal); 
-            font-size: 3rem; 
-            margin-bottom: 10px; 
-        }
-        
-        .mensaje { font-size: 1.1rem; line-height: 1.6; margin-bottom: 25px; }
-        .mensaje span { display: block; margin-top: 10px; font-weight: 700; color: var(--color-principal); font-size: 1.3rem; }
-
-        .corazon-central {
-            font-size: 60px;
-            color: var(--color-principal);
-            animation: latido 1.2s infinite;
-            display: inline-block;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 0 10px rgba(255, 77, 109, 0.5));
-        }
-
-        @keyframes latido {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-
-        .boton {
-            background: linear-gradient(45deg, var(--color-principal), var(--color-secundario));
-            color: white;
-            border: none;
-            padding: 15px 35px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 8px 20px rgba(255, 77, 109, 0.3);
-        }
-
-        .boton:hover { transform: scale(1.1); box-shadow: 0 12px 25px rgba(255, 77, 109, 0.5); }
-
-        /* --- MODAL REINVENTADO --- */
-        #modal-container {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 77, 109, 0.2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-            visibility: hidden;
-            opacity: 0;
-            transition: 0.5s;
-            backdrop-filter: blur(8px);
-        }
-
-        #modal-container.active {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .modal-contenido {
-            background: white;
-            padding: 45px 30px;
-            border-radius: 35px;
-            text-align: center;
-            max-width: 320px;
-            position: relative;
-            transform: translateY(100px);
-            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
-            border: 3px solid transparent;
-            background-clip: padding-box;
-            background-image: linear-gradient(white, white), 
-                              linear-gradient(45deg, #ff4d6d, #ff85a1, #ffc8dd);
-            background-origin: border-box;
-        }
-
-        #modal-container.active .modal-contenido { transform: translateY(0); }
-
-        .modal-contenido h2 { 
-            font-family: 'Dancing Script', cursive; 
-            color: var(--color-principal); 
-            font-size: 2.2rem;
-            margin: 0 0 15px 0;
-        }
-        
-        .modal-contenido p { font-size: 1.1rem; line-height: 1.5; color: #555; margin-bottom: 30px; }
-
-        .boton-cerrar {
-            background: #4a4a4a;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .boton-cerrar:hover { background: var(--color-principal); transform: translateY(-2px); }
-
-        /* Confeti de corazones */
-        .confeti {
-            position: fixed;
-            z-index: 150;
-            pointer-events: none;
-        }
-
-    </style>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
 </head>
+
 <body>
 
-    <script>
-        // Crear corazones de fondo al cargar
-        window.onload = () => {
-            for (let i = 0; i < 25; i++) {
-                const corazon = document.createElement('div');
-                corazon.className = 'corazon-bg';
-                corazon.innerHTML = '❤';
-                corazon.style.left = Math.random() * 100 + 'vw';
-                corazon.style.top = Math.random() * 100 + 'vh';
-                corazon.style.animationDuration = (Math.random() * 4 + 6) + 's';
-                corazon.style.fontSize = (Math.random() * 20 + 15) + 'px';
-                document.body.appendChild(corazon);
-            }
-        };
+<div class="container">
 
-        function crearConfeti() {
-            for (let i = 0; i < 30; i++) {
-                const confeti = document.createElement('div');
-                confeti.className = 'confeti';
-                confeti.innerHTML = '❤';
-                confeti.style.color = ['#ff4d6d', '#ff85a1', '#ffb3c1'][Math.floor(Math.random() * 3)];
-                confeti.style.left = '50%';
-                confeti.style.top = '50%';
-                confeti.style.fontSize = (Math.random() * 20 + 10) + 'px';
-                
-                const destinationX = (Math.random() - 0.5) * 800;
-                const destinationY = (Math.random() - 0.5) * 800;
+<div class="arco" id="flores">
 
-                document.body.appendChild(confeti);
+<div class="flor f1">
+<div class="petalo p1"></div>
+<div class="petalo p2"></div>
+<div class="petalo p3"></div>
+<div class="petalo p4"></div>
+<div class="petalo p5"></div>
+<div class="petalo p6"></div>
+<div class="centro"></div>
+</div>
 
-                const animation = confeti.animate([
-                    { transform: 'translate(-50%, -50%) scale(0)', opacity: 1 },
-                    { transform: `translate(${destinationX}px, ${destinationY}px) scale(1.5) rotate(${Math.random() * 360}deg)`, opacity: 0 }
-                ], {
-                    duration: 1500 + Math.random() * 1000,
-                    easing: 'cubic-bezier(0, .9, .57, 1)'
-                });
+<div class="flor f2">
+<div class="petalo p1"></div>
+<div class="petalo p2"></div>
+<div class="petalo p3"></div>
+<div class="petalo p4"></div>
+<div class="petalo p5"></div>
+<div class="petalo p6"></div>
+<div class="centro"></div>
+</div>
 
-                animation.onfinish = () => confeti.remove();
-            }
-        }
+<div class="flor f3">
+<div class="petalo p1"></div>
+<div class="petalo p2"></div>
+<div class="petalo p3"></div>
+<div class="petalo p4"></div>
+<div class="petalo p5"></div>
+<div class="petalo p6"></div>
+<div class="centro"></div>
+</div>
 
-        function abrirModal() {
-            document.getElementById('modal-container').classList.add('active');
-            crearConfeti(); // ¡Explosión al abrir!
-        }
+<div class="flor f4">
+<div class="petalo p1"></div>
+<div class="petalo p2"></div>
+<div class="petalo p3"></div>
+<div class="petalo p4"></div>
+<div class="petalo p5"></div>
+<div class="petalo p6"></div>
+<div class="centro"></div>
+</div>
 
-        function cerrarModal() {
-            document.getElementById('modal-container').classList.remove('active');
-        }
-    </script>
+<div class="flor f5">
+<div class="petalo p1"></div>
+<div class="petalo p2"></div>
+<div class="petalo p3"></div>
+<div class="petalo p4"></div>
+<div class="petalo p5"></div>
+<div class="petalo p6"></div>
+<div class="centro"></div>
+</div>
 
-    <div class="tarjeta">
-        <div class="corazon-central">❤</div>
-        <h1>Hola, mi amor</h1>
-        <div class="mensaje">
-            Solo quería recordarte que <strong>te amo infinitamente</strong>. 
-            Eres mi princesa y nada me hace más feliz que...
-            <span>¡verte sonreír así de lindo! ✨</span>
-        </div>
-        <button class="boton" onclick="abrirModal()">Tengo una promesa...</button>
-    </div>
+<div class="flor f6">
+<div class="petalo p1"></div>
+<div class="petalo p2"></div>
+<div class="petalo p3"></div>
+<div class="petalo p4"></div>
+<div class="petalo p5"></div>
+<div class="petalo p6"></div>
+<div class="centro"></div>
+</div>
 
-    <div id="modal-container" onclick="cerrarModal()">
-        <div class="modal-contenido" onclick="event.stopPropagation()">
-            <h2>Mi Promesa ✨</h2>
-            <p>Prometo hacer todo lo que esté en mis manos para que esa sonrisa nunca se apague. Tu felicidad es mi mundo. ❤️</p>
-            <button class="boton-cerrar" onclick="cerrarModal()">Te amo</button>
-        </div>
-    </div>
+<div class="flor f7">
+<div class="petalo p1"></div>
+<div class="petalo p2"></div>
+<div class="petalo p3"></div>
+<div class="petalo p4"></div>
+<div class="petalo p5"></div>
+<div class="petalo p6"></div>
+<div class="centro"></div>
+</div>
+
+</div>
+
+<div id="mensaje">
+
+<h1>Te Amo ❤️</h1>
+
+<p>
+Se que hoy no te pude dar flores pero... 
+jamás me olvido de ti.
+Siempre quiero tratar de que te sientas especial haciendo algo nuevo o algo original.
+Yo te amo mucho y cada día me enamoro más de ti.
+Cuando pueda te daré flores sin que se vea raro para los demá, te mereces mas de una sola flor,
+te mereces todas
+Te amo.
+</p>
+
+<button onclick="mostrarFoto()">Ver algo especial</button>
+
+</div>
+
+<img id="foto"
+src="https://drive.google.com/thumbnail?id=1nORGKLQvbsCDo4m3chPmOwelvq1Pz73w&sz=w1000">
+
+</div>
+
+<div class="petalo-caida" style="left:10%;animation-duration:8s;"></div>
+<div class="petalo-caida" style="left:25%;animation-duration:10s;"></div>
+<div class="petalo-caida" style="left:40%;animation-duration:7s;"></div>
+<div class="petalo-caida" style="left:55%;animation-duration:9s;"></div>
+<div class="petalo-caida" style="left:70%;animation-duration:11s;"></div>
+<div class="petalo-caida" style="left:85%;animation-duration:8s;"></div>
+
+<script>
+function mostrarFoto(){
+document.getElementById("mensaje").style.display="none";
+document.getElementById("foto").style.display="block";
+document.getElementById("flores").style.opacity="0";
+}
+</script>
 
 </body>
 </html>

@@ -1,0 +1,214 @@
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:radial-gradient(circle at top,#1b1f38,#0f111a);
+font-family:'Great Vibes', cursive;
+overflow:hidden;
+}
+
+.container{
+position:relative;
+text-align:center;
+color:#ffd84d;
+}
+
+/* TEXTO */
+
+h1{
+font-size:60px;
+margin-bottom:10px;
+text-shadow:0 0 10px rgba(255,216,77,.5);
+}
+
+p{
+font-size:28px;
+margin-bottom:30px;
+color:#fff3b0;
+}
+
+/* BOTON */
+
+button{
+padding:12px 35px;
+font-size:20px;
+border:none;
+border-radius:25px;
+background:linear-gradient(145deg,#ffd84d,#ffb703);
+color:#222;
+cursor:pointer;
+font-family:'Segoe UI';
+font-weight:bold;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+/* IMAGEN */
+
+#foto{
+display:none;
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:360px;
+height:360px;
+object-fit:cover;
+border-radius:20px;
+box-shadow:0 10px 40px rgba(0,0,0,0.6);
+}
+
+/* ARCO */
+
+.arco{
+position:absolute;
+top:-170px;
+left:50%;
+transform:translateX(-50%);
+width:450px;
+height:220px;
+}
+
+/* TALLOS */
+
+.tallo{
+position:absolute;
+width:4px;
+height:70px;
+background:linear-gradient(#3ddc84,#145a32);
+left:50%;
+top:40px;
+border-radius:2px;
+}
+
+/* HOJAS */
+
+.hoja{
+position:absolute;
+width:20px;
+height:30px;
+background:linear-gradient(#34d399,#166534);
+border-radius:50% 50% 50% 0;
+transform:rotate(-40deg);
+}
+
+/* FLOR REALISTA */
+
+.flor{
+position:absolute;
+width:50px;
+height:50px;
+animation:crecer 1.2s forwards;
+transform:scale(0);
+}
+
+/* PETALOS */
+
+.petalo{
+position:absolute;
+width:24px;
+height:36px;
+background:linear-gradient(#ffb3c6,#ff4d6d);
+border-radius:50% 50% 0 0;
+transform-origin:bottom center;
+}
+
+.p1{transform:rotate(0deg) translateY(-10px);}
+.p2{transform:rotate(60deg) translateY(-10px);}
+.p3{transform:rotate(120deg) translateY(-10px);}
+.p4{transform:rotate(180deg) translateY(-10px);}
+.p5{transform:rotate(240deg) translateY(-10px);}
+.p6{transform:rotate(300deg) translateY(-10px);}
+
+/* CENTRO */
+
+.centro{
+position:absolute;
+width:16px;
+height:16px;
+background:radial-gradient(circle,#fff176,#fbc02d);
+border-radius:50%;
+top:17px;
+left:17px;
+box-shadow:0 0 6px rgba(255,200,0,.8);
+}
+
+/* POSICION FLORES ARCO */
+
+.f1{left:0;top:140px;}
+.f2{left:70px;top:80px;}
+.f3{left:140px;top:30px;}
+.f4{left:210px;top:0px;}
+.f5{left:280px;top:30px;}
+.f6{left:350px;top:80px;}
+.f7{left:420px;top:140px;}
+
+/* ANIMACION CRECER */
+
+@keyframes crecer{
+0%{
+transform:scale(0) rotate(-20deg);
+opacity:0;
+}
+60%{
+transform:scale(1.2) rotate(5deg);
+}
+100%{
+transform:scale(1);
+opacity:1;
+}
+}
+
+/* PETALOS CAYENDO */
+
+.petalo-caida{
+position:absolute;
+width:12px;
+height:18px;
+background:linear-gradient(#ff8fa3,#ff4d6d);
+border-radius:50% 50% 50% 0;
+top:-20px;
+animation:caer linear infinite;
+}
+
+@keyframes caer{
+0%{
+transform:translateY(-10px) rotate(0deg);
+opacity:1;
+}
+100%{
+transform:translateY(110vh) rotate(360deg);
+opacity:0;
+}
+
+}
+
+#mensajeFinal{
+display:none;
+position:absolute;
+top:75%;
+left:50%;
+transform:translateX(-50%);
+font-size:32px;
+color:#ffd84d;
+text-align:center;
+max-width:600px;
+text-shadow:0 0 10px rgba(255,216,77,.6);
+animation:aparecer 2s ease;
+}
+
+@keyframes aparecer{
+from{
+opacity:0;
+transform:translate(-50%,20px);
+}
+to{
+opacity:1;
+transform:translate(-50%,0);
+}
+}
